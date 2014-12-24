@@ -1,0 +1,88 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="DublinBikes.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:maps="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="False">
+
+	<Grid x:Name="LayoutRoot">
+		<maps:Map
+			Name="BikeMap"
+			Background="AntiqueWhite"
+			Center="53.345235, -006.256208"
+			LandmarksEnabled="True"
+			Loaded="BikeMap_Loaded"
+			WatermarkMode="Default"
+			ZoomLevel="15" />
+		<StackPanel
+			Name="TitlePanel"
+			Background="{Binding Path=Teal, Source={StaticResource Colours}}"
+			HorizontalAlignment="Stretch"
+			VerticalAlignment="Center">
+			<TextBlock
+				Name="TitleBlock"
+				FontFamily="Segoe UI"
+				FontSize="60"
+				Foreground="{Binding Path=White, Source={StaticResource Colours}}"
+				HorizontalAlignment="Center"
+				Text="{Binding Path=LocalizedResources.Title, Source={StaticResource LocalizedStrings}}" />
+			<TextBlock
+				Name="TagBlock"
+				FontFamily="Segoe UI"
+				FontSize="16"
+				Foreground="{Binding Path=White, Source={StaticResource Colours}}"
+				HorizontalAlignment="Center"
+				Padding="0,0,0,10"
+				Text="{Binding Path=LocalizedResources.TaglineLoading, Source={StaticResource LocalizedStrings}}" />
+		</StackPanel>
+
+		<Grid Name="ToolbarGrid" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Visibility="Collapsed">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="70" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="70" />
+			</Grid.ColumnDefinitions>
+			<StackPanel Background="{Binding Path=TranslucentTeal, Source={StaticResource Colours}}" Grid.Column="0">
+				<TextBlock
+					Name="BikesBlock"
+					FontSize="32"
+					Foreground="{Binding Path=White, Source={StaticResource Colours}}"
+					HorizontalAlignment="Center"
+					Padding="0,8,0,0" />
+				<TextBlock
+					FontSize="12"
+					Foreground="{Binding Path=White, Source={StaticResource Colours}}"
+					HorizontalAlignment="Center"
+					Padding="5"
+					Text="{Binding Path=LocalizedResources.AvailableBikesLabel, Source={StaticResource LocalizedStrings}}" />
+			</StackPanel>
+			<Grid Background="#88000000" Grid.Column="1">
+				<TextBlock Name="AddressBlock" HorizontalAlignment="Center" Padding="20,0" VerticalAlignment="Center" />
+			</Grid>
+			<StackPanel Background="{Binding Path=TranslucentWhite, Source={StaticResource Colours}}" Grid.Column="2">
+				<TextBlock
+					Name="FreeBlock"
+					FontSize="32"
+					Foreground="{Binding Path=Teal, Source={StaticResource Colours}}"
+					HorizontalAlignment="Center"
+					Padding="0,8,0,0" />
+				<TextBlock
+					FontSize="12"
+					Foreground="{Binding Path=Teal, Source={StaticResource Colours}}"
+					HorizontalAlignment="Center"
+					Padding="5"
+					Text="{Binding Path=LocalizedResources.FreeDocksLabel, Source={StaticResource LocalizedStrings}}" />
+			</StackPanel>
+		</Grid>
+	</Grid>
+
+</phone:PhoneApplicationPage>
